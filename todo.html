@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TO Do List</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
+    <style>
+        ol{
+            font-size: large;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 mt-3">
+                <h2 class="text-center">To Do List</h2>
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-6">
+                <div class="card">
+                  <div class="card-body">
+                      <div class="col-12">
+                        <label for="task1" class="visually-hidden">Task:</label>
+                        <input type="text" class="form-control" id="task" placeholder="Add Task">
+                        <p id="k" ></p>
+            
+                      </div>
+                      <div class="col-12 mt-2">
+                       <div class="d-grid">
+                        <button class="btn btn-primary" type="button" onclick="addtask()">Add Task</button><br>
+                               <button class="btn btn-primary" type="button" onclick="pend()">Add Pending task</button>
+                        <!-- <button onclick="complete()">Complete</button> -->
+                        </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-12 mt-3">
+                    <h2 class="text-center">To Do List</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6">
+                   
+                </div>
+            </div>
+            <div class="row justify-content-center mt-4">
+                <div class="col-12 col-md-6">
+                    <h4 class="text-center">Your Task</h4>
+                    <ol class="list-group list-group-numbered" id="op">
+                       
+                    </ol>
+                </div>
+                <div class="col-12 col-md-6">
+                    <h4 class="text-center">Pending Task</h4>
+                    <ol class="list-group list-group-numbered" id="pendi">
+                        
+                    </ol>
+                </div>
+                <div class="col-12 col-md-6">
+                    <h4 class="text-center">Complete Task</h4>
+                    <ol class="list-group list-group-numbered" id="comp">
+                       
+                    </ol>
+                </div>
+            </div>
+        </div>
+    <!-- <div class="row justify-content-center mt-4">
+        <div class="col-12 col-md-6">
+          
+        </div>
+    </div>
+</div> -->
+    <script type="text/javascript" src="js/bootstrap.js"> </script>
+      <script type="text/javascript"> data=document.getElementById('task');
+        op=document.getElementById('op');
+        pendi=document.getElementById('pendi');
+        comop=document.getElementById('comp');
+        k.innerHTML="Pending";
+        tasklist=["breakfast","sleep","study"];
+        pendlist=[];
+        cc=[];
+function addtask(){
+    r=data.value;
+    
+    tasklist.push(r);
+    data.value="";
+    k.innerHTML="";
+    viewtask();
+}
+function pend()
+{
+    r=data.value;
+    pendlist.push(r);
+     viewp();
+}
+//  setInterval("pend()",10);
+function viewtask(){
+    res="";
+    for(i=0;i<tasklist.length;i++){
+res=res+`<li class="list-group-item">${tasklist[i]}<button class='btn btn-danger
+     btn-sm' onclick='deleteTask(${i})'> x</button></li>`;
+    }
+    op.innerHTML=res;
+}
+function viewp(){
+    res="";
+    for(i=0;i<pendlist.length;i++){
+res=res+`<li class="list-group-item">${pendlist[i]}<button class='btn btn-danger
+     btn-sm' onclick='deletepend(${i})'> x</button></li>`;
+    }
+
+    pendi.innerHTML=res;
+}
+function viewcc(){
+    res="";
+    for(i=0;i<cc.length;i++){
+res=res+`<li class="list-group-item">${cc[i]}</li>`;
+    }
+
+    comop.innerHTML=res;
+}
+function deleteTask(arg){
+    cc.push(tasklist[arg]);
+    res=tasklist.splice(arg,1);
+    viewcc();
+    viewtask();
+}
+function deletepend(arg){
+    cc.push(pendlist[arg]);
+    res=pendlist.splice(arg,1);
+      viewcc();
+    viewp();
+}
+</script> 
+</body>
+</html>
